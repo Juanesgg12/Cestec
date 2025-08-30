@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/CESTEC-02.ico.png" type="image/x-icon">
+    <title>Productos | CesTec</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="CesTec Logo" width="150" height="50">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" class="activo">Productos</a></li>
+                <li><a href="categoria.html">Categoría</a></li>
+                <li><a href="#">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bienvenida">
+            <h2>Todos los Productos</h2>
+            <p>Explora nuestro catálogo completo de tecnología.</p>
+        </section>
+
+        <section class="filtros">
+            <input type="text" id="buscador" placeholder="Buscar producto...">
+            <select id="categoria">
+                <option value="">Todas las categorías</option>
+                <option value="ram">Memorias RAM</option>
+                <option value="monitores">Monitores</option>
+                <option value="procesadores">Procesadores</option>
+            </select>
+            <select id="orden">
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+            </select>
+        </section>
+
+        <section class="productos">
+            <div class="producto">
+                <img src="img/MemoriaRam2.jpg" alt="Memoria RAM" width="200" height="200">
+                <h3>Memoria RAM 16GB</h3>
+                <p>$250.000</p>
+            </div>
+            <div class="producto">
+                <img src="img/Monitor.webp" alt="Monitor" width="200" height="200">
+                <h3>Monitor 24&quot; Full HD</h3>
+                <p>$1.200.000</p>
+            </div>
+            <div class="producto">
+                <img src="img/Procesador.jpg" alt="Procesador Intel i7" width="200" height="200">
+                <h3>Procesador Intel i7</h3>
+                <p>$1.500.000</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

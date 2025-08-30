@@ -1,0 +1,168 @@
+.categorias {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.categoria {
+  margin-bottom: 40px;
+  flex: 1 1 300px; 
+  max-width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.categoria h3 {
+  border-left: 5px solid #c81c7c;
+  padding-left: 10px;
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.productos-categoria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.producto {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.producto img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.producto-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.producto-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.producto-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Media Queries para Categorías */
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  .categorias {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .categoria {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
+  
+  .categoria h3 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  .producto {
+    max-width: 250px;
+  }
+  
+  .producto img {
+    height: 130px;
+  }
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+  .categorias {
+    padding: 10px;
+  }
+  
+  .categoria {
+    margin-bottom: 25px;
+    padding: 15px;
+  }
+  
+  .categoria h3 {
+    font-size: 1.2em;
+    padding-left: 8px;
+  }
+  
+  .producto {
+    max-width: 200px;
+  }
+  
+  .producto img {
+    height: 100px;
+  }
+  
+  .producto-info {
+    padding: 10px;
+  }
+  
+  .producto-info h4 {
+    font-size: 1em;
+  }
+  
+  .producto-info p {
+    font-size: 0.8em;
+  }
+}
+
+/* Pantallas grandes */
+@media screen and (min-width: 1200px) {
+  .categorias {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  
+  .categoria {
+    max-width: 350px;
+    padding: 25px;
+  }
+  
+  .categoria h3 {
+    font-size: 1.6em;
+  }
+  
+  .producto img {
+    height: 180px;
+  }
+  
+  .producto-info {
+    padding: 18px;
+  }
+  
+  .producto-info h4 {
+    font-size: 1.2em;
+  }
+}
