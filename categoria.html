@@ -5,73 +5,261 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="img/CESTEC-02.ico.png" type="image/x-icon">
   <title>Categorías | CesTec</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="stylescategoria.css"/>
+  <!-- Fuentes Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Estilos CSS principales -->
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/stylescarrito.css" />
+  <link rel="stylesheet" href="styles/animaciones.css" />
+  <link rel="stylesheet" href="styles/stylescategoria.css" />
+  <!-- Estilos específicos en línea (mover a CSS externo si es posible) -->
+  <style>
+    .btn-agregar {
+      background: linear-gradient(to right, #c81c7c, #81237c);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      width: 100%;
+    }
+    
+    .producto-precio {
+      font-weight: bold;
+      color: #c81c7c;
+      font-size: 1.1em;
+      margin: 8px 0;
+    }
+    
+    .categoria-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .productos-contador {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      color: #666;
+      font-weight: 500;
+      border: 2px solid #dee2e6;
+    }
+    
+    .btn-ver-todos {
+      background: transparent;
+      color: #c81c7c;
+      border: 2px solid #c81c7c;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+    
+    .btn-ver-todos:hover {
+      background: #c81c7c;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(200, 28, 124, 0.3);
+    }
+
+    .categoria-descripcion {
+      color: #666;
+      margin: 15px 0 25px 0;
+      line-height: 1.5;
+      font-size: 0.95em;
+    }
+
+    .categoria-icono {
+      font-size: 2em;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .producto-destacado {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .producto-destacado::before {
+      content: '⭐ DESTACADO';
+      position: absolute;
+      top: 10px;
+      right: -30px;
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: white;
+      padding: 5px 40px;
+      font-size: 0.7em;
+      font-weight: bold;
+      transform: rotate(45deg);
+      z-index: 1;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .estadisticas-categoria {
+      display: flex;
+      justify-content: space-around;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-numero {
+      font-size: 2em;
+      font-weight: 700;
+      color: #c81c7c;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .busqueda-rapida {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .busqueda-rapida input {
+      width: 100%;
+      max-width: 400px;
+      padding: 15px 20px;
+      border: 2px solid #dee2e6;
+      border-radius: 50px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    .busqueda-rapida input:focus {
+      border-color: #c81c7c;
+      box-shadow: 0 0 0 3px rgba(200, 28, 124, 0.1);
+      outline: none;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="CesTec Logo" width="150" height="50">
+    <nav role="navigation" aria-label="Menú principal">
+      <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="Logo CesTec" width="150" height="50">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="productos.html">Productos</a></li>
         <li><a href="categoria.html" class="activo">Categoría</a></li>
-        <li><a href="#">Carrito</a></li>
+        <li>
+          <a href="#" class="carrito-icono" onclick="abrirCarrito()" aria-label="Abrir carrito de compras">
+            🛒 Carrito
+            <span class="carrito-contador" id="carritoContador">0</span>
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="bienvenida">
+    <section class="bienvenida fade-in">
       <h2>Categorías de Productos</h2>
-      <p>Encuentra fácilmente el tipo de producto que necesitas.</p>
+      <p>Encuentra fácilmente el tipo de producto que necesitas para construir tu setup perfecto o mejorar tu estación de trabajo.</p>
     </section>
 
-    <section class="categorias">
+    <!-- Búsqueda Rápida -->
+    <section class="busqueda-rapida slide-down">
+      <h3>🔍 Búsqueda Rápida</h3>
+      <input type="text" id="busquedaRapida" placeholder="Buscar en todas las categorías..." onkeyup="buscarEnCategorias()">
+    </section>
 
-      <div class="categoria">
-        <h3>Memorias RAM</h3>
-        <div class="productos-categoria">
-          <div class="producto">
-            <img src="img/Ram.jpg" alt="Memoria RAM 16GB">
-            <div class="producto-info">
-              <h4>Memoria RAM 16GB</h4>
-              <p>DDR4 3200MHz</p>
-            </div>
-          </div>
-        </div>
+    <!-- Estadísticas Generales -->
+    <section class="estadisticas-categoria fade-in">
+      <div class="stat-item">
+        <span class="stat-numero contador" id="totalProductos">0</span>
+        <span class="stat-label">Productos</span>
       </div>
+      <div class="stat-item">
+        <span class="stat-numero contador" id="totalCategorias">6</span>
+        <span class="stat-label">Categorías</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-numero contador" id="totalMarcas">15+</span>
+        <span class="stat-label">Marcas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-numero contador" id="promedioCalidad">4.8★</span>
+        <span class="stat-label">Calidad</span>
+      </div>
+    </section>
 
-      <div class="categoria">
-        <h3>Monitores</h3>
-        <div class="productos-categoria">
-          <div class="producto">
-            <img src="img/Monitores.avif" alt="Monitor 24 pulgadas">
-            <div class="producto-info">
-              <h4>Monitor 24"</h4>
-              <p>Full HD 1920x1080</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="categoria">
-        <h3>Procesadores</h3>
-        <div class="productos-categoria">
-          <div class="producto">
-            <img src="img/Procesadores3.png" alt="Procesador Intel i7">
-            <div class="producto-info">
-              <h4>Intel Core i7</h4>
-              <p>12va Generación</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Contenedor de Categorías -->
+    <section class="categorias entrada-escalonada" id="categoriasContainer">
+      <!-- Las categorías se cargarán dinámicamente -->
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+  <footer class="fade-in">
+  <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+  <p>Contacto: <a href="mailto:info@cestec.com">info@cestec.com</a> | Tel: <a href="tel:+5741234567">+57 4 123-4567</a> | WhatsApp: <a href="https://wa.me/573001234567" target="_blank" rel="noopener">+57 300 123 4567</a></p>
+  <p>📍 Medellín, Colombia | 🚚 Envíos nacionales | 🔧 Soporte técnico especializado</p>
   </footer>
-</body>
-</html>
+
+  <!-- Modal del Carrito -->
+  <div id="carritoModal" class="carrito-modal">
+    <div class="carrito-modal-contenido modal-entrada">
+      <div class="carrito-header">
+        <h2>🛒 Mi Carrito de Compras</h2>
+        <span class="carrito-cerrar" onclick="cerrarCarrito()">&times;</span>
+      </div>
+      <div class="carrito-contenido">
+        <div id="carritoItems"></div>
+      </div>
+      <div class="carrito-footer">
+        <div class="carrito-total">
+          <h3>Total: <span class="total-precio">$<span id="carritoTotal">0</span></span></h3>
+        </div>
+        <div class="carrito-botones">
+          <button class="btn-pago" onclick="procederPago()">
+            💳 Proceder al Pago
+          </button>
+          <button class="btn-vaciar" onclick="vaciarCarrito()">
+            🗑️ Vaciar Carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts JavaScript -->
+  <script src="main.js" defer></script>
+  <script src="carrito.js" defer></script>

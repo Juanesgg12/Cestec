@@ -7,7 +7,8 @@ body {
 }
 
 header {
-    background: linear-gradient(to right,#c81c7c,#81237c);
+    background: -webkit-linear-gradient(to right, #c81c7c, #81237c);
+    background: linear-gradient(to right, #c81c7c, #81237c);
     color: #fff;
     padding: 15px;
 }
@@ -79,7 +80,8 @@ nav ul li a {
     border-radius: 8px;
 }
 footer {
-    background: linear-gradient(to right,#c81c7c,#81237c);
+    background: -webkit-linear-gradient(to right, #c81c7c, #81237c);
+    background: linear-gradient(to right, #c81c7c, #81237c);
     color: white;
     text-align: center;
     padding: 15px;
@@ -98,6 +100,60 @@ nav ul li a:hover {
 nav ul li a.activo {
     border-bottom: 2px solid #fff;
 }
+.carrito-icono {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .carrito-contador {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        .btn-agregar {
+            background: linear-gradient(to right, #c81c7c, #81237c);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-agregar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .producto {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .producto-precio {
+            font-weight: bold;
+            color: #c81c7c;
+            font-size: 1.1em;
+        }
+        
+        .sin-resultados {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
 
 /* Media Queries para Responsividad */
 

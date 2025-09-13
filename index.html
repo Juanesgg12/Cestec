@@ -4,64 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/CESTEC-02.ico.png" type="image/x-icon">
-    <title>CesTec</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CesTec - Tecnología de Vanguardia</title>
+    <!-- Fuentes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos CSS principales -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/stylescarrito.css">
+    <link rel="stylesheet" href="styles/animaciones.css">
+    <link rel="stylesheet" href="styles/stylescategoria.css">
+    <!-- Estilos específicos en línea (mover a CSS externo si es posible) -->
+    <style>
+        .btn-agregar {
+            background: linear-gradient(to right, #c81c7c, #81237c);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            width: 100%;
+        }
+        .producto-precio {
+            font-weight: bold;
+            color: #c81c7c;
+            font-size: 1.2em;
+            margin: 8px 0;
+        }
+        .sin-resultados {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-style: italic;
+        }
+        .sin-resultados h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .hero-section {
+            background: linear-gradient(to right,#c81c7c,#81237c);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .btn-hero {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-hero:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+        .stats-section {
+            background: #f8f9fa;
+            padding: 40px 0;
+            margin: 40px 0;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c81c7c;
+            display: block;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="CesTec Logo" width="150" height="50">
+        <nav role="navigation" aria-label="Menú principal">
+            <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="Logo CesTec" width="150" height="50">
             <ul>
                 <li><a href="index.html" class="activo">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="categoria.html">Categoría</a></li>
-                <li><a href="#">Carrito</a></li>
+                <li>
+                    <a href="#" class="carrito-icono" onclick="abrirCarrito()" aria-label="Abrir carrito de compras">
+                        🛒 Carrito
+                        <span class="carrito-contador" id="carritoContador">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
+    <!-- Sección Hero -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="efecto-escritura">Bienvenido a CesTec</h1>
+            <p>Tu destino para la mejor tecnología de vanguardia</p>
+            <a href="productos.html" class="btn-hero hover-elevacion">Explorar Productos</a>
+        </div>
+    </section>
+
+    <!-- Sección de Estadísticas -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number contador">500+</span>
+                <span class="stat-label">Productos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number contador">10,000+</span>
+                <span class="stat-label">Clientes Satisfechos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number contador">5</span>
+                <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number contador">24/7</span>
+                <span class="stat-label">Soporte Técnico</span>
+            </div>
+        </div>
+    </section>
+
     <main>
-        <section class="bienvenida">
-            <h2>Nuestros Productos</h2>
-            <p>Catálogo de productos electrónicos.</p>
+        <section class="bienvenida fade-in">
+            <h2>Productos Destacados</h2>
+            <p>Descubre nuestra selección de productos electrónicos de última generación con la mejor relación calidad-precio.</p>
         </section>
 
-        <section class="filtros">
-            <input type="text" id="buscador" placeholder="Buscar producto...">
-            <select id="categoria">
+        <section class="filtros slide-down">
+            <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="filtrarProductos()">
+            <select id="categoria" onchange="filtrarProductos()">
                 <option value="">Todas las categorías</option>
-                <option value="frases">Memorias Ram</option>
-                <option value="personalizados">Monitores</option>
-                <option value="tematicos">Procesadores</option>
+                <option value="ram">Memorias RAM</option>
+                <option value="monitores">Monitores</option>
+                <option value="procesadores">Procesadores</option>
+                <option value="tarjetas-graficas">Tarjetas Gráficas</option>
+                <option value="discos">Discos Duros</option>
+                <option value="fuentes">Fuentes de Poder</option>
             </select>
-            <select id="orden">
+            <select id="orden" onchange="ordenarProductos()">
                 <option value="az">A-Z</option>
                 <option value="za">Z-A</option>
+                <option value="precio-asc">Precio: Menor a Mayor</option>
+                <option value="precio-desc">Precio: Mayor a Menor</option>
             </select>
         </section>
 
-        <section class="productos">
-            <div class="producto">
-                <img src="img/MemoriaRam2.jpg" alt="Memoria RAM ejemplo" width="200" height="200">
-                <h3>Memoria RAM 16GB</h3>
-                <p>$250.000</p>
-            </div>
-            <div class="producto">
-                <img src="img/Monitor.webp" alt="Monitor ejemplo" width="200" height="200">
-                <h3>Monitor Full HD</h3>
-                <p>$1.200.000</p>
-            </div>
-            <div class="producto">
-                <img src="img/Procesador.jpg" alt="Procesador ejemplo" width="200" height="200">
-                <h3>Procesador Intel i7</h3>
-                <p>$1.500.000</p>
-            </div>
-            <!-- Más productos aquí -->
+        <section class="productos entrada-escalonada" id="productosContainer">
+            <!-- Los productos se cargarán dinámicamente -->
         </section>
+        
+        <div class="sin-resultados" id="sinResultados" style="display: none;">
+            <h3>🔍 Sin Resultados</h3>
+            <p>No se encontraron productos que coincidan con tu búsqueda.</p>
+            <p>Intenta con otros términos o explora nuestras categorías.</p>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
-        <p>Contacto: info@cestec.com</p>
+     <!-- Modal del Carrito -->
+    <div id="carritoModal" class="carrito-modal">
+        <div class="carrito-modal-contenido modal-entrada">
+            <div class="carrito-header">
+                <h2>🛒 Mi Carrito de Compras</h2>
+                <span class="carrito-cerrar" onclick="cerrarCarrito()">&times;</span>
+            </div>
+            <div class="carrito-contenido">
+                <div id="carritoItems"></div>
+            </div>
+            <div class="carrito-footer">
+                <div class="carrito-total">
+                    <h3>Total: <span class="total-precio">$<span id="carritoTotal">0</span></span></h3>
+                </div>
+                <div class="carrito-botones">
+                    <button class="btn-pago" onclick="procederPago()">
+                        💳 Proceder al Pago
+                    </button>
+                    <button class="btn-vaciar" onclick="vaciarCarrito()">
+                        🗑️ Vaciar Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="fade-in">
+    <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+    <p>Contacto: <a href="mailto:info@cestec.com">info@cestec.com</a> | Tel: <a href="tel:+5741234567">+57 4 123-4567</a> | WhatsApp: <a href="https://wa.me/573001234567" target="_blank" rel="noopener">+57 300 123 4567</a></p>
     </footer>
+
+   
+    <!-- Scripts JavaScript -->
+    <script src="script/carrito.js" defer></script>
+    <script src="script/principal.js" defer></script>
+    <script src="script/categoria.js" defer></script>
 </body>
 </html>

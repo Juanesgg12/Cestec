@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/CESTEC-02.ico.png" type="image/x-icon">
     <title>Productos | CesTec</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Fuentes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos CSS principales -->
+    <link rel="stylesheet" href="styles/animaciones.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/stylescarrito.css">
+    <link rel="stylesheet" href="styles/stylescategoria.css">
 </head>
 <body>
     <header>
-        <nav>
-            <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="CesTec Logo" width="150" height="50">
+        <nav role="navigation" aria-label="Menú principal">
+            <img class="logo" src="img/CESTEC BLANCO_Mesa de trabajo 1.png" alt="Logo CesTec" width="150" height="50">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html" class="activo">Productos</a></li>
                 <li><a href="categoria.html">Categoría</a></li>
-                <li><a href="#">Carrito</a></li>
+                <li>
+                    <a href="#" class="carrito-icono" onclick="abrirCarrito()" aria-label="Abrir carrito de compras">
+                        🛒 Carrito
+                        <span class="carrito-contador" id="carritoContador">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -23,44 +34,60 @@
     <main>
         <section class="bienvenida">
             <h2>Todos los Productos</h2>
-            <p>Explora nuestro catálogo completo de tecnología.</p>
+            <p>Explora nuestro catálogo completo de tecnología de última generación.</p>
         </section>
 
         <section class="filtros">
-            <input type="text" id="buscador" placeholder="Buscar producto...">
-            <select id="categoria">
+            <input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="filtrarProductos()">
+            <select id="categoria" onchange="filtrarProductos()">
                 <option value="">Todas las categorías</option>
                 <option value="ram">Memorias RAM</option>
                 <option value="monitores">Monitores</option>
                 <option value="procesadores">Procesadores</option>
+                <option value="tarjetas-graficas">Tarjetas Gráficas</option>
+                <option value="discos">Discos Duros</option>
+                <option value="fuentes">Fuentes de Poder</option>
             </select>
-            <select id="orden">
+            <select id="orden" onchange="ordenarProductos()">
                 <option value="az">A-Z</option>
                 <option value="za">Z-A</option>
+                <option value="precio-asc">Precio: Menor a Mayor</option>
+                <option value="precio-desc">Precio: Mayor a Menor</option>
             </select>
         </section>
 
-        <section class="productos">
-            <div class="producto">
-                <img src="img/MemoriaRam2.jpg" alt="Memoria RAM" width="200" height="200">
-                <h3>Memoria RAM 16GB</h3>
-                <p>$250.000</p>
-            </div>
-            <div class="producto">
-                <img src="img/Monitor.webp" alt="Monitor" width="200" height="200">
-                <h3>Monitor 24&quot; Full HD</h3>
-                <p>$1.200.000</p>
-            </div>
-            <div class="producto">
-                <img src="img/Procesador.jpg" alt="Procesador Intel i7" width="200" height="200">
-                <h3>Procesador Intel i7</h3>
-                <p>$1.500.000</p>
-            </div>
+        <div class="productos-stats" id="productosStats"></div>
+
+        <section class="productos" id="productosContainer">
+            <!-- Los productos se cargarán dinámicamente -->
         </section>
+        
+        <div class="sin-resultados" id="sinResultados" style="display: none;">
+            No se encontraron productos que coincidan con tu búsqueda.
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+    <p>&copy; 2025 CesTec. Todos los derechos reservados.</p>
+    <p>Contacto: <a href="mailto:info@cestec.com">info@cestec.com</a> | Tel: <a href="tel:+5741234567">+57 4 123-4567</a></p>
     </footer>
+
+    <!-- Modal del Carrito -->
+    <div id="carritoModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="carrito-modal-contenido modal-entrada">
+            <span class="carrito-cerrar" onclick="cerrarCarrito()">&times;</span>
+            <h2>🛒 Carrito de Compras</h2>
+            <div id="carritoItems"></div>
+            <div class="carrito-footer">
+                <h3>Total: $<span id="carritoTotal">0</span></h3>
+                <button class="btn-pago" onclick="procederPago()">Proceder al Pago</button>
+                <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts JavaScript -->
+    <script src="script/carrito.js" defer></script>
+    <script src="script/principal.js" defer></script>
+    <script src="script/categoria.js" defer></script>
 </body>
 </html>
